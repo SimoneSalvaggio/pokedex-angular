@@ -1,0 +1,12 @@
+<div class="loader">
+    <div *ngIf="loadingList" class="spinner-border text-danger" role="status"></div>
+</div>
+
+<div *ngIf="!loadingList">
+    <p>{{selectedPage}} in list (check)</p>
+    <div class="container">
+        <div class="row">
+            <app-card-component [pokemonArray]="pokemonArray"></app-card-component>
+        </div>
+    </div>
+</div>

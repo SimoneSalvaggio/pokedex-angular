@@ -1,0 +1,11 @@
+.container{
+    text-align: center;
+    align-items: center;
+}
+
+button{
+    color: red
+}
+button:hover{
+    color: darkred
+}
