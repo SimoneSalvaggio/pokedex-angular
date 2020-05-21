@@ -11,8 +11,8 @@ export class NavigatorComponentComponent implements OnInit {
   pagesToGenerate: number;
   loading: boolean;
   pagesArray = [];
-  @Input() selectedPage: number;
 
+  @Input() selectedPage: number;
   @Output() pageEmitter = new EventEmitter<number>();
 
   constructor(private pokemonListService: PokemonListService) { }
@@ -23,7 +23,8 @@ export class NavigatorComponentComponent implements OnInit {
     resp.subscribe((data) => this.getPokemonCountResponse(data)
     )
   }
-
+  
+  // PER CONTARE I RISULTATI E GENERARE IL GIUSTO NUMERO DI PAGINE
   getPokemonCountResponse(body: any) {
     let numberOfPokemon = body["count"]
     this.pagesToGenerate = Math.floor(numberOfPokemon / 100 + 1)
@@ -33,6 +34,7 @@ export class NavigatorComponentComponent implements OnInit {
     this.loading = false;
   }
 
+  // 3 METODI PER IMPOSTARE LA PAGINA SELEZIONATA
   selectPage(page){
     this.pageEmitter.emit(page);
   }

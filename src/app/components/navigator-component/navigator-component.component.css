@@ -6,6 +6,12 @@
 button{
     color: red
 }
+
 button:hover{
     color: darkred
+}
+
+.selectedPage{
+    background-color: red;
+    color: white;
 }

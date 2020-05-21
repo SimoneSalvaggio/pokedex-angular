@@ -9,10 +9,24 @@ import { Pokemon } from 'src/app/model/pokemon';
 export class CardComponentComponent implements OnInit {
 
   @Input() pokemonArray: Pokemon[];
+  
+  pokemonName: string;
+  pokemonSprite: string;
+  pokemonId: number;
+  pokemonStats: string;
+  pokemonTypes: string;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  // AVEVO PROVATO A PASSARLO COME POKEMON MA NON STAMPAVA I DATI QUINDI LI HO PASSATI SINGOLARMENTE
+  getModalDetails(name, id, sprite, types, stats) {
+    this.pokemonName = name;
+    this.pokemonId = id;
+    this.pokemonSprite = sprite;
+    this.pokemonTypes = types;
+    this.pokemonStats = stats;
   }
 
 }

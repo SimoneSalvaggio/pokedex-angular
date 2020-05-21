@@ -7,6 +7,8 @@ import { NavbarComponentComponent } from './components/navbar-component/navbar-c
 import { NavigatorComponentComponent } from './components/navigator-component/navigator-component.component';
 import { ListComponentComponent } from './components/list-component/list-component.component';
 import { CardComponentComponent } from './components/card-component/card-component.component';
+import { ModalComponentComponent } from './components/modal-component/modal-component.component';
+
 import { PokemonListService } from './services/pokemon-list.service';
 import { PokemonDetailsService } from './services/pokemon-details.service';
 
@@ -16,7 +18,8 @@ import { PokemonDetailsService } from './services/pokemon-details.service';
     NavbarComponentComponent,
     NavigatorComponentComponent,
     ListComponentComponent,
-    CardComponentComponent
+    CardComponentComponent,
+    ModalComponentComponent
   ],
   imports: [
     BrowserModule,
