@@ -10,8 +10,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   title = 'pokedex-angular';
+  
   selectedPage: number;
   pokemonArray: Pokemon[];
   loadingList: boolean;
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     resp.subscribe((data) => this.getPokemonJson(data))
   }
 
-  // OTTENGO I JSON DEI SINGOLI POKEMON DALLE URL DEL JSON DELLA LISTA DEI POKEMON
+  // OTTENGO I JSON DEI SINGOLI POKEMON DALLE URL CHE HO PRESO DAL JSON DELLA LISTA
   getPokemonJson(body: any) {
     for (let i: number = 0; i < this.limit; i++) {
       let resp = this.pokemonDetailsService.getPokemonDetails(body["results"][i]["url"]);
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     this.loadingList = false;
   }
 
-  // CREO IL POKEMON COME OGGETTO E LO PUSHO NELL'ARRAY
+  // CREO IL POKEMON E LO PUSHO NELL'ARRAY
   getPokemonNameAndSprite(body: any) {
     let newPokemon = new Pokemon();
 
@@ -74,8 +74,15 @@ export class AppComponent implements OnInit {
     let tempStats = "";
     let stats = body["stats"];
     for (let index = 0; index < stats.length; index++) {
-      tempStats += " - " + body["stats"][index]["stat"]["name"] + ": " + body["stats"][index]["base_stat"];
+      let nameOfStat = body["stats"][index]["stat"]["name"];
+      let valueOfStat = body["stats"][index]["base_stat"];
+      if (index == 0) {
+        tempStats += nameOfStat + ": " + valueOfStat;
+      } else {
+        tempStats += " - " + nameOfStat + ": " + valueOfStat;
+      }
     }
     return tempStats;
   }
+
 }

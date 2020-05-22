@@ -13,7 +13,7 @@ export class ListComponentComponent implements OnInit {
   @Input() loadingList: boolean;
   @Input() pokemonArray: Pokemon[];
 
-  constructor(private pokemonDetailsService: PokemonDetailsService, private pokemonListService: PokemonListService) { }
+  constructor() { }
   
   ngOnInit(): void { }
 
