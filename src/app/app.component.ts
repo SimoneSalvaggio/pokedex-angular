@@ -1,17 +1,15 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { PokemonDetailsService } from './services/pokemon-details.service';
-import { PokemonListService } from './services/pokemon-list.service';
-import { Pokemon } from './model/pokemon';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { PokemonService } from "./services/pokemon.service";
+import { Pokemon } from "./model/pokemon";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = 'pokedex-angular';
-  
+  title = "pokedex-angular";
+
   selectedPage: number;
   pokemonArray: Pokemon[];
   loadingList: boolean;
@@ -22,7 +20,10 @@ export class AppComponent implements OnInit {
     this.setPage(1);
   }
 
-  constructor(private pokemonDetailsService: PokemonDetailsService, private pokemonListService: PokemonListService) { }
+  constructor(
+    private pokemonDetailsService: PokemonService,
+    private pokemonListService: PokemonService
+  ) {}
 
   // OTTENGO IL JSON DELLA LISTA DEI POKEMON DESIDERATI CON NOME E URL
   setPage(page) {
@@ -31,21 +32,28 @@ export class AppComponent implements OnInit {
     this.pokemonArray = [];
     this.offset = (this.selectedPage - 1) * 100;
     let resp = this.pokemonListService.getPokemonList(this.limit, this.offset);
-    resp.subscribe((data) => this.getPokemonJson(data))
+    resp.subscribe((data) => this.getPokemonJson(data));
   }
 
   // OTTENGO I JSON DEI SINGOLI POKEMON DALLE URL CHE HO PRESO DAL JSON DELLA LISTA
   getPokemonJson(body: any) {
+    let promises = [];
     for (let i: number = 0; i < this.limit; i++) {
-      let resp = this.pokemonDetailsService.getPokemonDetails(body["results"][i]["url"]);
-      resp.subscribe((data) => this.getPokemonNameAndSprite(data)
-      )
+      let resp = this.pokemonDetailsService.getPokemonDetails(
+        body["results"][i]["url"]
+      );
+      let promise = new Promise((resolve) => {
+        resp.subscribe((data) => this.getPokemonNameAndSprite(data, resolve));
+      });
+      promises.push(promise);
     }
-    this.loadingList = false;
+    Promise.all(promises).then(() => {
+      this.loadingList = false;
+    });
   }
 
   // CREO IL POKEMON E LO PUSHO NELL'ARRAY
-  getPokemonNameAndSprite(body: any) {
+  getPokemonNameAndSprite(body: any, resolve: any) {
     let newPokemon = new Pokemon();
 
     let tempTypes = this.typesInString(body);
@@ -57,9 +65,9 @@ export class AppComponent implements OnInit {
     newPokemon.types = tempTypes;
     newPokemon.stats = tempStats;
     this.pokemonArray.push(newPokemon);
-
+    resolve("DONE");
   }
-  //PROCEDIMENTO PER TRASFORMARE I RISULTATI MULTIPLI DI TYPES IN UNA SOLA STRINGA  
+  //PROCEDIMENTO PER TRASFORMARE I RISULTATI MULTIPLI DI TYPES IN UNA SOLA STRINGA
   private typesInString(body: any) {
     let tempTypes = "";
     let typesName = body["types"];
@@ -84,5 +92,4 @@ export class AppComponent implements OnInit {
     }
     return tempStats;
   }
-
 }
