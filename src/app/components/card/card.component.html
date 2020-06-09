@@ -1,0 +1,19 @@
+<div class="container">
+    <!-- CARD -->
+    <div *ngIf="!loadingCard" class='card centered'>
+        {{ pokemonNameAndUrl.name }}
+        <div *ngIf="">
+
+
+        </div>
+        <img src="{{pokemonToShow.sprites}}" alt="img">
+        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
+            (click)="getModalDetails(pokemonNameAndUrl.url)">SHOW</button>
+        <!-- MODAL -->
+        <app-modal [pokemonToShow]="pokemonToShow">
+        </app-modal>
+    </div>
+    <div *ngIf="loadingCard" class='card centered'>
+        <div style="margin-left: 48%; padding: 20px;" class="spinner-border text-danger" role="status"></div>
+    </div>
+</div>

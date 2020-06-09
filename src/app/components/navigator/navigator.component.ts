@@ -2,11 +2,11 @@ import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { PokemonService } from "src/app/services/pokemon.service";
 
 @Component({
-  selector: "app-navigator-component",
-  templateUrl: "./navigator-component.component.html",
-  styleUrls: ["./navigator-component.component.css"],
+  selector: "app-navigator",
+  templateUrl: "./navigator.component.html",
+  styleUrls: ["./navigator.component.css"],
 })
-export class NavigatorComponentComponent implements OnInit {
+export class NavigatorComponent implements OnInit {
   pagesToGenerate: number;
   loading: boolean;
   pagesArray = [];
