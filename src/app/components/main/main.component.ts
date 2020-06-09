@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { PokemonBase } from 'src/app/model/pokemonBase';
-import { BrowserStack } from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'app-main',
@@ -13,8 +11,7 @@ export class MainComponent implements OnInit {
   loadingList: boolean;
   offset: number;
   limit: number = 100;
-  pokemonBaseArray: PokemonBase[];
-  newPokemon: PokemonBase;
+  pokemonUrlArray: string[];
 
   ngOnInit(): void {
     this.setPage(1);
@@ -26,24 +23,17 @@ export class MainComponent implements OnInit {
 
   // OTTENGO IL JSON DELLA LISTA DEI POKEMON DESIDERATI CON NOME E URL E CREO UN ARRAY DI OGGETTI POKEMONBASE (CON NOME E URL)
   setPage(page) {
-    this.pokemonBaseArray = [];
+    this.pokemonUrlArray = [];
     this.loadingList = true;
-    // if (page == 10) {
-    //   this.loadingList = false;
-    // }
     this.selectedPage = page;
     this.offset = (this.selectedPage - 1) * 100;
     let resp = this.pokemonService.getPokemonList(this.limit, this.offset);
     resp.subscribe((data) => {
-      for (let i = 0; i < this.limit; i++) {
-        this.newPokemon = new PokemonBase();
+      for (let i of data["results"]) {
 
-        this.newPokemon.name = data["results"][i]["name"].toUpperCase();
-        this.newPokemon.url = data["results"][i]["url"];
+        let newPokemonurl = i["url"];
         
-        if (data != undefined) {
-          this.pokemonBaseArray.push(this.newPokemon)
-        }
+        this.pokemonUrlArray.push(newPokemonurl)
       }
       this.loadingList = false;
     });

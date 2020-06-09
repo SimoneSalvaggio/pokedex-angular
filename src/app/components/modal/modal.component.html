@@ -1,9 +1,9 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" [id]="'modal'+pokemonToShow.id" tabindex="-1" role="dialog" [attr.aria-labelledby]="'modal'+pokemonToShow.id+'Label'"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title toUpper" id="exampleModalLabel">{{ pokemonToShow.name }}</h5>
+                <h5 class="modal-title toUpper" [id]="'modal' + pokemonToShow.id">{{ pokemonToShow.name }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

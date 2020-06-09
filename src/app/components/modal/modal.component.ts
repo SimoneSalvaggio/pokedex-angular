@@ -8,7 +8,6 @@ import { Pokemon } from 'src/app/model/pokemon';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() pokemonName: string;
   @Input() pokemonToShow: Pokemon;
 
   constructor() { }

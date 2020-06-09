@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pokemon } from 'src/app/model/pokemon';
-import { PokemonBase } from 'src/app/model/pokemonBase';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -10,8 +9,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class CardComponent implements OnInit {
 
-  @Input() pokemonArray: Pokemon[];
-  @Input() pokemonNameAndUrl: PokemonBase;
+  @Input() pokemonUrl: string;
 
   loadingCard: boolean;
   pokemonToShow: Pokemon;
@@ -24,7 +22,7 @@ export class CardComponent implements OnInit {
     this.loadingCard = true;
     this.pokemonToShow = new Pokemon;
 
-    let resp = this.pokemonService.getPokemonDetails(this.pokemonNameAndUrl.url)
+    let resp = this.pokemonService.getPokemonDetails(this.pokemonUrl)
     resp.subscribe((data) => {
       let tempTypes = this.typesInString(data);
       let tempStats = this.statsInString(data);
@@ -36,26 +34,6 @@ export class CardComponent implements OnInit {
       this.pokemonToShow.stats = tempStats;
     })
     this.loadingCard = false;
-  }
-
-  getModalDetails(url) {
-    let resp = this.pokemonService.getPokemonDetails(url)
-    resp.subscribe((data) => {
-
-      this.pokemonToShow = new Pokemon();
-
-      let tempTypes = this.typesInString(data);
-      let tempStats = this.statsInString(data);
-
-      this.pokemonToShow.id = data["id"];
-      this.pokemonToShow.name = data["name"];
-      this.pokemonToShow.sprites = data["sprites"]["front_default"];
-      this.pokemonToShow.types = tempTypes;
-      this.pokemonToShow.stats = tempStats;
-
-      console.log(this.pokemonNameAndUrl.url);
-      console.log(this.pokemonToShow);
-    })
   }
 
   //PROCEDIMENTO PER TRASFORMARE I RISULTATI MULTIPLI DI TYPES IN UNA SOLA STRINGA
