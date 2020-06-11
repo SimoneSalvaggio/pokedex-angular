@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -30,9 +30,7 @@ export class MainComponent implements OnInit {
     let resp = this.pokemonService.getPokemonList(this.limit, this.offset);
     resp.subscribe((data) => {
       for (let i of data["results"]) {
-
         let newPokemonurl = i["url"];
-        
         this.pokemonUrlArray.push(newPokemonurl)
       }
       this.loadingList = false;

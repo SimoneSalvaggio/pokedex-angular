@@ -1,6 +1,4 @@
-import { Component, OnInit } from "@angular/core";
-import { PokemonService } from "./services/pokemon.service";
-import { Pokemon } from "./model/pokemon";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -9,9 +7,11 @@ import { Pokemon } from "./model/pokemon";
 })
 export class AppComponent implements OnInit {
   title = "pokedex-angular";
+  @Input() ricercaPerTipo: number;
 
   ngOnInit(): void {  }
 
   constructor() {}
+
 
 }

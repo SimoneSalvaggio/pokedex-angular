@@ -10,6 +10,7 @@ export class NavigatorComponent implements OnInit {
   pagesToGenerate: number;
   loading: boolean;
   pagesArray = [];
+  typesArray = []
 
   @Input() selectedPage: number;
   @Output() pageEmitter = new EventEmitter<number>();

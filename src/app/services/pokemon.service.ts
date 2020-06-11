@@ -22,4 +22,15 @@ export class PokemonService {
     let resp = this.http.get(url);
     return resp;
   }
+
+  getPokemonTypes(){
+    let resp = this.http.get('https://pokeapi.co/api/v2/type/');
+    return resp;
+  }
+
+  getPokemonTypeDetail(type){
+    let resp = this.http.get('https://pokeapi.co/api/v2/type/'+type);
+    return resp;
+  }
+
 }

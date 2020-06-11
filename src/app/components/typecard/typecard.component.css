@@ -1,0 +1,10 @@
+.centered{
+    text-align: center;
+    align-items: center;
+    color: red;
+    border: red double 3px;
+}
+
+.toUpper{
+    text-transform: uppercase;
+}

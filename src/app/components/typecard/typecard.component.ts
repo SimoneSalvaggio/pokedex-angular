@@ -1,21 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pokemon } from 'src/app/model/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pokemon } from 'src/app/model/pokemon';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  selector: 'app-typecard',
+  templateUrl: './typecard.component.html',
+  styleUrls: ['./typecard.component.css']
 })
-export class CardComponent implements OnInit {
+export class TypecardComponent implements OnInit {
 
   @Input() pokemonUrl: string;
 
   loadingCard: boolean;
   pokemonToShow: Pokemon;
 
-  constructor(
-    private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
       this.cardGenerator();
