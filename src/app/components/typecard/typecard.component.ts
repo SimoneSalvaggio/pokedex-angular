@@ -11,7 +11,7 @@ export class TypecardComponent implements OnInit {
 
   @Input() pokemonUrl: string;
 
-  loadingCard: boolean;
+  loadingTypeCard: boolean;
   pokemonToShow: Pokemon;
 
   constructor(private pokemonService: PokemonService) { }
@@ -21,7 +21,7 @@ export class TypecardComponent implements OnInit {
   }
 
   private cardGenerator() {
-    this.loadingCard = true;
+    this.loadingTypeCard = true;
     this.pokemonToShow = new Pokemon;
     let resp = this.pokemonService.getPokemonDetails(this.pokemonUrl);
     resp.subscribe((data) => {
@@ -33,7 +33,7 @@ export class TypecardComponent implements OnInit {
       this.pokemonToShow.types = tempTypes;
       this.pokemonToShow.stats = tempStats;
     });
-    this.loadingCard = false;
+    this.loadingTypeCard = false;
   }
 
 
