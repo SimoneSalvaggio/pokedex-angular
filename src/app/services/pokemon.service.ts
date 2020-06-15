@@ -33,4 +33,13 @@ export class PokemonService {
     return resp;
   }
 
+  getPokemonColors(){
+    let resp = this.http.get('https://pokeapi.co/api/v2/pokemon-color/');
+    return resp;
+  }
+
+  getPokemonColorDetail(color){
+    let resp = this.http.get('https://pokeapi.co/api/v2/pokemon-color/'+color);
+    return resp;
+  }
 }

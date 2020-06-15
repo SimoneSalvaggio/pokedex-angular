@@ -1,15 +1,13 @@
-<div class="container">
-    <!-- CARD -->
-    <div *ngIf="!loadingCard" class='card centered'>
-        {{ pokemonToShow.name }}
-        <img src="{{pokemonToShow.sprites}}" alt="img">
-        <button class="btn btn-outline-danger" data-toggle="modal"
-            [attr.data-target]="'#modal' + pokemonToShow.id">SHOW</button>
-    </div>
-    <!-- MODAL -->
-    <app-modal [pokemonToShow]="pokemonToShow">
-    </app-modal>
-    <div *ngIf="loadingCard" class='card centered'>
-        <div style="margin-left: 48%; padding: 20px;" class="spinner-border text-danger" role="status"></div>
-    </div>
+<!-- CARD -->
+<div *ngIf="!loadingCard" class='card centered'>
+    {{ pokemonToShow.name }}
+    <img src="{{pokemonToShow.sprites}}" alt="img">
+    <button class="btn btn-outline-danger" data-toggle="modal"
+        [attr.data-target]="'#modal' + pokemonToShow.id">SHOW</button>
+</div>
+
+<!-- MODAL -->
+<app-modal [pokemonToShow]="pokemonToShow"></app-modal>
+<div *ngIf="loadingCard" class='card centered'>
+    <div class="spinner-border loadingSpinner text-danger" role="status"></div>
 </div>

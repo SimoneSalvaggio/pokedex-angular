@@ -1,11 +1,13 @@
-<app-navigator [selectedPage]="selectedPage" (pageEmitter)="setPage($event)"></app-navigator>
-<div class="container">
+<div class="pagesNavigator">
+    <app-navigator [selectedPage]="selectedPage" (pageEmitter)="setPage($event)"></app-navigator>
+</div>
+<div style="margin-top: 20px;" class="container">
     <div *ngIf="!loadingList" class="row">
         <div class="col-4" *ngFor="let pokemonUrl of pokemonUrlArray">
             <app-card [pokemonUrl]="pokemonUrl"></app-card>
         </div>
     </div>
     <div *ngIf="loadingList" class="row">
-        <div style="margin-left: 48%; padding: 20px;" class="spinner-border text-danger" role="status"></div>
+        <div class="spinner-border loadingSpinner text-danger" role="status"></div>
     </div>
 </div>

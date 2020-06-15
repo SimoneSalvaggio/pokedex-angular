@@ -1,0 +1,12 @@
+.loadingSpinner{
+    margin-left: 48%;
+    padding: 20px;
+}
+
+.pagesNavigator{
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    margin-top: -75px;
+    border: red 3px solid;
+}

@@ -22,7 +22,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'home',
+    path: 'list',
     component: MainComponent
   },
   {

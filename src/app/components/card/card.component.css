@@ -8,3 +8,8 @@
 .toUpper{
     text-transform: uppercase;
 }
+
+.loadingSpinner{
+    margin-left: 48%;
+    padding: 20px;
+}
