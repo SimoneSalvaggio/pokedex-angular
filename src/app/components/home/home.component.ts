@@ -12,4 +12,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //SOLO PER MOSTRARE IL TITOLO ALL'APERTURA
+
 }

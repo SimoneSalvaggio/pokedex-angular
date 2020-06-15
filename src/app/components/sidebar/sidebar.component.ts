@@ -12,4 +12,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //COMPONENTE UTILE SOLO AL ROUTING
+
 }

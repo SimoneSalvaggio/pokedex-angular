@@ -8,6 +8,7 @@ import { Pokemon } from 'src/app/model/pokemon';
 })
 export class ModalComponent implements OnInit {
 
+  //OTTENGO L'OGGETTO POKEMON GIA' PRONTO PER ESSERE MOSTRATO NEL MODAL
   @Input() pokemonToShow: Pokemon;
 
   constructor() { }

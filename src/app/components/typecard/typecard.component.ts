@@ -20,6 +20,7 @@ export class TypecardComponent implements OnInit {
       this.cardGenerator();
   }
 
+  //GENERATORE OGGETTI POKEMON CON DETTAGLI
   private cardGenerator() {
     this.loadingTypeCard = true;
     this.pokemonToShow = new Pokemon;

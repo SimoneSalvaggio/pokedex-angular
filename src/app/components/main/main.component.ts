@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
     private pokemonService: PokemonService
   ) { }
 
-  // OTTENGO IL JSON DELLA LISTA DEI POKEMON DESIDERATI CON NOME E URL E CREO UN ARRAY DI OGGETTI POKEMONBASE (CON NOME E URL)
+  // OTTENGO IL JSON DELLA LISTA DELLE URL DEI POKEMON E LI METTO NELL'ARRAY
   setPage(page) {
     this.pokemonUrlArray = [];
     this.loadingList = true;

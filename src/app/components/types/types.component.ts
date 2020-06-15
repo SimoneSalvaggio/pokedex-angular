@@ -24,6 +24,7 @@ export class TypesComponent implements OnInit {
     resps.subscribe((data) => this.generateTypesList(data))
   }
 
+  //OTTENGO IL JSON DELLA LISTA DELLE URL DESIDERATE DEI POKEMON E LI METTO NELL'ARRAY
   getPokemonUrlByType(type){
     this.pokemonUrlArrayByType = [];
     this.loadingTypeList = true;

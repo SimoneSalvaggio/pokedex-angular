@@ -21,6 +21,7 @@ export class CardComponent implements OnInit {
       this.cardGenerator();
   }
 
+  //GENERATORE OGGETTI POKEMON CON DETTAGLI
   private cardGenerator() {
     this.loadingCard = true;
     this.pokemonToShow = new Pokemon;
