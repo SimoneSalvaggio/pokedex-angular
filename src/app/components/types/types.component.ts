@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { TypeService } from 'src/app/services/type.service';
 
 @Component({
   selector: 'app-types',
@@ -14,13 +15,13 @@ export class TypesComponent implements OnInit {
   typeToSearch: string;
   maxOfPokemon: number;
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private typeService: TypeService, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     let resp = this.pokemonService.getPokemonList(100, 0);
     resp.subscribe((data) => this.getPokemonCount(data));
 
-    let resps = this.pokemonService.getPokemonTypes();
+    let resps = this.typeService.getPokemonTypes();
     resps.subscribe((data) => this.generateTypesList(data))
   }
 
@@ -28,7 +29,7 @@ export class TypesComponent implements OnInit {
   getPokemonUrlByType(type){
     this.pokemonUrlArrayByType = [];
     this.loadingTypeList = true;
-    let resp = this.pokemonService.getPokemonTypeDetail(type.toLowerCase());
+    let resp = this.typeService.getPokemonTypeDetail(type.toLowerCase());
     resp.subscribe((data) => {
       for (let i of data["pokemon"]) {
         let newPokemonurl = i["pokemon"]["url"];

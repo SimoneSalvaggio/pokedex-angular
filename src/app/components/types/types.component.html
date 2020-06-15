@@ -1,16 +1,14 @@
 <h2>Seleziona un tipo:</h2>
-<div class="container">
-    <div style="border-bottom: red double 3px;" class="row">
-        <div class="col-2" *ngFor="let x of typesArray" >
-            <button (click)="getPokemonUrlByType(x)" class="btn btn-outline-danger">{{ x }}</button>
-        </div>
+<div style="border-bottom: red double 3px;" class="row">
+    <div class="col-2" *ngFor="let x of typesArray">
+        <button (click)="getPokemonUrlByType(x)" class="btn btn-outline-danger">{{ x }}</button>
     </div>
-    <div class="row" *ngIf="loadingTypeList">
-        <div style="margin-left: 48%; padding: 20px;" class="spinner-border text-danger" role="status"></div>
-    </div>
-    <div class="row" *ngIf="!loadingTypeList">
-        <div class="col-4" *ngFor="let pokemonUrl of pokemonUrlArrayByType">
-            <app-card [pokemonUrl]="pokemonUrl"></app-card>
-        </div>
+</div>
+<div class="row" *ngIf="loadingTypeList">
+    <div style="margin-left: 48%; padding: 20px;" class="spinner-border text-danger" role="status"></div>
+</div>
+<div class="row" *ngIf="!loadingTypeList">
+    <div class="col-4" *ngFor="let pokemonUrl of pokemonUrlArrayByType">
+        <app-card [pokemonUrl]="pokemonUrl"></app-card>
     </div>
 </div>

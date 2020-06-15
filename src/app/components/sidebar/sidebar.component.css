@@ -23,7 +23,9 @@ h3{
   }
   
   .sidenav a:hover {
+    font-weight: bold;
     color: darkred;
+    text-transform: uppercase;
   }
   
   .main {
@@ -35,4 +37,10 @@ h3{
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+  }
+
+  h3:hover {
+    font-weight: bold;
+    color: darkred;
+    text-transform: uppercase;
   }
