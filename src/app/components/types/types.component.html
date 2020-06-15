@@ -10,7 +10,7 @@
     </div>
     <div class="row" *ngIf="!loadingTypeList">
         <div class="col-4" *ngFor="let pokemonUrl of pokemonUrlArrayByType">
-            <app-typecard [pokemonUrl]="pokemonUrl"></app-typecard>
+            <app-card [pokemonUrl]="pokemonUrl"></app-card>
         </div>
     </div>
 </div>

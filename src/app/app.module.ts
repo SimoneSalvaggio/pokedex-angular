@@ -15,7 +15,6 @@ import { MainComponent } from './components/main/main.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TypesComponent } from './components/types/types.component';
 import { HomeComponent } from './components/home/home.component';
-import { TypecardComponent } from './components/typecard/typecard.component';
 
 const routes: Routes = [
   {
@@ -42,8 +41,7 @@ const routes: Routes = [
     MainComponent,
     SidebarComponent,
     TypesComponent,
-    HomeComponent,
-    TypecardComponent
+    HomeComponent
   ],
   imports: [BrowserModule, CommonModule, HttpClientModule, RouterModule.forRoot(routes)],
   providers: [PokemonService],
